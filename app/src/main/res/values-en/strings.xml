@@ -29,6 +29,7 @@
     <string name="default_user_name">Me</string>
     <string name="error_parsing_highscores">Error analyzing scores</string>
     <string name="error_adding_initial_highscores">Error while inserting initial highscores</string>
+    <string name="alu">ALU flags</string>
 
     <string name="error_no_clock">Error: this exercise is not prepared for playing</string>
     <string name="check">Check</string>
@@ -41,6 +42,9 @@
     <string name="gameisoverexp">Game ended! You have %1$d seconds left and obtained %2$d points!</string>
     <string name="lost_time_over">Game Over! Time\'s up! Score: %1$d</string>
     <string name="end_game">End game</string>
+
+    <!-- Strings ALU flags -->
+    <string name="alu_flags_title">What are the results of the ZCOS flags?</string>
 
     <!-- Módulo: Binario -->
     <string name="convert_bin_to_dec">Convert natural binary to decimal with %1$d bits</string>
