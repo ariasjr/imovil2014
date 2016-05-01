@@ -39,7 +39,7 @@ public abstract class BaseNetworkMaskExerciseFragment
 		mExerciseTitle = (TextView) rootView.findViewById(
 				R.id.text_view_exercise_title);
 		mQuestion = (TextView) rootView.findViewById(R.id.text_view_question);
-		mAnswer = (EditText) rootView.findViewById(R.id.text_view_answer);
+		mAnswer = (EditText) rootView.findViewById(R.id.zcos);
 
 		mExerciseTitle.setText(titleString());
 		

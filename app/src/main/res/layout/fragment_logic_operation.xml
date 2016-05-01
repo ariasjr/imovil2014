@@ -90,7 +90,7 @@ limitations under the License.
                     android:textSize="@dimen/normal_font" />
 
                 <EditText
-                    android:id="@+id/text_view_answer"
+                    android:id="@+id/zcos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/LOentrada2"
