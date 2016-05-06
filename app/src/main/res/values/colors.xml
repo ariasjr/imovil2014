@@ -19,5 +19,6 @@
     <color name="key_decimal_background">#1A2A8B</color>
     <color name="key_hexadecimal_background">#F88700</color>
     <color name="key_control_background">#0A9B23</color>
+    <color name="black">#e11111</color>
 
 </resources>
