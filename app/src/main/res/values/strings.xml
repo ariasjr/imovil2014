@@ -46,6 +46,10 @@ limitations under the License.
     <string name="default_user_name">Yo</string>
     <string name="error_parsing_highscores">Error al analizar las puntuaciones</string>
     <string name="error_adding_initial_highscores">Error al insertar las puntuaciones iniciales</string>
+    <string name="alu">Flags ALU</string>
+
+    <!-- Strings ALU flags -->
+    <string name="alu_flags_title">¿Cual es el resultado de los flagas ZCOS?</string>
 
     <!-- Strings logic gate -->
     <string name="logic_gate_title">¿Qué puerta lógica es?</string>

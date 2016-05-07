@@ -79,7 +79,7 @@ public abstract class BaseNumericalExerciseFragment extends
 		rootView = inflater.inflate(R.layout.fragment_numerical_exercise,
 				container, false);
 
-		mAnswerEditText = (EditText) rootView.findViewById(R.id.text_view_answer);
+		mAnswerEditText = (EditText) rootView.findViewById(R.id.zcos);
 		mChangeDirectionButton = (Button) rootView.findViewById(R.id.change);
 		mSolutionButton = (Button) rootView.findViewById(R.id.seesolution);
 		mCheckButton = (Button) rootView.findViewById(R.id.checkbutton);
