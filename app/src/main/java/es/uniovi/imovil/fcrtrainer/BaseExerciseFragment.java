@@ -128,7 +128,7 @@ public abstract class BaseExerciseFragment extends Fragment {
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		mResult = (View) view.findViewById(R.id.result);
+		mResult =  view.findViewById(R.id.result);
 		mResultImage = (ImageView) view.findViewById(R.id.resultimage);
 		mClock = (TextView) getView().findViewById(R.id.text_view_clock);
 		mScoreTextView = (TextView) view.findViewById(R.id.text_view_score);
@@ -249,13 +249,13 @@ public abstract class BaseExerciseFragment extends Fragment {
 			// MainActivity. No se hace nada
 		}
 
-		MenuItem setup = menu.findItem(R.id.action_settings);
+		//MenuItem setup = menu.findItem(R.id.action_settings);
 		if (mIsPlaying) {
 			item.setIcon(R.drawable.ic_action_stop);
-			setup.setVisible(false);
+			//setup.setVisible(false);
 		} else {
 			item.setIcon(R.drawable.ic_action_play);
-			setup.setVisible(true);
+			//setup.setVisible(true);
 		}
 	}
 
@@ -447,7 +447,7 @@ public abstract class BaseExerciseFragment extends Fragment {
 	/**
 	 * Saves the score using the Highscore Manager.
 	 * 
-	 * @param score
+	 * //@param score
 	 */
 	protected void saveScore() {
 		String user = getString(R.string.default_user_name);

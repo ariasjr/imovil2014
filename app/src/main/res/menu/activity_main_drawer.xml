@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <group android:checkableBehavior="single" >
+
+        <item android:title="@string/codes" android:icon="@drawable/ic_setting_light">
+            <menu>
+                <item
+                    android:id="@+id/nav_binary"
+                    android:title="@string/binary" />
+                <item
+                    android:id="@+id/nav_hexadecimal"
+                    android:title="@string/hexadecimal" />
+                <item
+                    android:id="@+id/nav_sign_and_magnitude"
+                    android:title="@string/sign_and_magnitude" />
+                <item
+                    android:id="@+id/nav_twoscomplement"
+                    android:title="@string/twoscomplement" />
+                <item
+                    android:id="@+id/nav_floating_point"
+                    android:title="@string/floating_point" />
+            </menu>
+        </item>
+
+        <item android:title="@string/digital_systems" android:icon="@drawable/ic_setting_light">
+            <menu>
+                <item
+                    android:id="@+id/nav_logic_gate"
+
+                    android:title="@string/logic_gate" />
+                <item
+                    android:id="@+id/nav_logic_operation"
+                    android:title="@string/logic_operation" />
+            </menu>
+        </item>
+
+        <item android:title="@string/networks" android:icon="@drawable/ic_setting_light">
+            <menu>
+                <item
+                    android:id="@+id/nav_network_address"
+                    android:title="@string/network_address" />
+                <item
+                    android:id="@+id/nav_cidr"
+                    android:title="@string/cidr" />
+                <item
+                    android:id="@+id/nav_host_count"
+                    android:title="@string/host_count" />
+                <item
+                    android:id="@+id/nav_network_mask"
+                    android:title="@string/network_mask" />
+                <item
+                    android:id="@+id/nav_network_layer"
+                    android:title="@string/network_layer" />
+            </menu>
+        </item>
+
+        <item android:title="@string/others" android:icon="@drawable/ic_setting_light">
+            <menu>
+                <item
+                android:id="@+id/nav_highscores"
+                android:title="@string/highscores" />
+                <item
+                    android:id="@+id/nav_config"
+                    android:title="@string/action_settings" />
+                <item
+                    android:id="@+id/nav_help"
+                    android:title="@string/action_help" />
+            </menu>
+        </item>
+
+    </group>
+
+</menu>

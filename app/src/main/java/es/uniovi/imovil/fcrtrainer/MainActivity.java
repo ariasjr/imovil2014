@@ -28,22 +28,26 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import es.uniovi.imovil.fcrtrainer.SectionedDrawerAdapter.Group;
 
-public class MainActivity extends ActionBarActivity implements
-		ListView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 	/**
 	 * Nombre del fichero de preferencias.
@@ -62,7 +66,7 @@ public class MainActivity extends ActionBarActivity implements
 
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
-	private ListView mDrawerList;
+	//private ListView mDrawerList;
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	private int mExerciseResIndex;
@@ -99,7 +103,7 @@ public class MainActivity extends ActionBarActivity implements
 		if (savedInstanceState == null)
 			updateContentFragment();
 
-		initializeDrawer(fromSavedInstanceState);		
+		initializeDrawer(fromSavedInstanceState);
 	}
 
 	@Override
@@ -126,7 +130,7 @@ public class MainActivity extends ActionBarActivity implements
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflar el menú		
+		// Inflar el menú
 		if (isDrawerOpen()) {
 			// TODO: Si el Drawer está desplegado no deben mostrarse iconos de
 			// acción
@@ -149,7 +153,7 @@ public class MainActivity extends ActionBarActivity implements
 			return true;
 		}
 		
-		switch(item.getItemId()){
+		/*switch(item.getItemId()){
 		case R.id.action_settings:
 			Intent intent = new Intent(this, SettingsActivity.class);
 			startActivity(intent);
@@ -158,7 +162,7 @@ public class MainActivity extends ActionBarActivity implements
 			Intent goToHelp = new Intent(this, HelpActivity.class);
 			startActivity(goToHelp);
 			break;
-		}
+		}*/
 		
 		return super.onOptionsItemSelected(item);
 	}
@@ -174,7 +178,7 @@ public class MainActivity extends ActionBarActivity implements
 		mTitle = title;
 		getSupportActionBar().setTitle(mTitle);
 	}
-
+/*
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
@@ -186,12 +190,14 @@ public class MainActivity extends ActionBarActivity implements
 			mTitle = getString(mExerciseResIndex);
 		}
 		// Cerrar el Drawer
-		mDrawerLayout.closeDrawer(mDrawerList);
+		//mDrawerLayout.closeDrawer(mDrawerList);
+	}
+*/
+	public boolean isDrawerOpen() {
+		//return mDrawerLayout.isDrawerOpen(mDrawerList);
+		return false;
 	}
 
-	public boolean isDrawerOpen() {
-		return mDrawerLayout.isDrawerOpen(mDrawerList);
-	}
 	
 	private void updateContentFragment() {
 		Fragment fragment = FragmentFactory
@@ -201,19 +207,14 @@ public class MainActivity extends ActionBarActivity implements
 
 		fragmentTransaction.replace(R.id.content_frame, fragment, "Hola");
 		fragmentTransaction.commit();
+		setTitle(mExerciseResIndex);
 	}
 
 	private void initializeDrawer(boolean fromSavedState) {
 		// Contenido organizado en secciones
-		ArrayList<Group<String, Integer>> sections = createDrawerEntries();
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.left_drawer);
-		mDrawerList.setAdapter(new SectionedDrawerAdapter(this,
-				R.layout.drawer_list_item, R.layout.drawer_list_header,
-				sections));
 
-		// Listener
-		mDrawerList.setOnItemClickListener(this);
+
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 		// Mostrar el icono del drawer
 		final ActionBar actionBar = getSupportActionBar();
@@ -239,21 +240,29 @@ public class MainActivity extends ActionBarActivity implements
 			}
 		};
 
+
+
 		// Si el usuario no ha desplegado alguna vez el Drawer
-		mTitle = getString(mExerciseResIndex);
+		/*mTitle = getString(mExerciseResIndex);
 		if (!mUserLearnedDrawer && !fromSavedState) {
-			mDrawerLayout.openDrawer(mDrawerList);
+			//mDrawerLayout.openDrawer(mDrawerList);
 			actionBar.setTitle(mDrawerTitle);
-		} else {			
+		} else {
 			setTitle(mTitle);
-		}
+		}*/
+
+		setTitle(mExerciseResIndex);
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		mDrawerToggle.syncState();
+
+		NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+		navigationView.setNavigationItemSelectedListener(this);
 
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 	}
-
+/*
 	private ArrayList<Group<String, Integer>> createDrawerEntries() {
 		ArrayList<Group<String, Integer>> sections = new ArrayList<Group<String,
 				Integer>>();
@@ -278,11 +287,11 @@ public class MainActivity extends ActionBarActivity implements
 			int defaultId = 0;
 			group.children[i] = array.getResourceId(i, defaultId);
 		}
-		
+
 		array.recycle();
-		
+
 		sections.add(group);
-	}
+	}*/
 
 	@Override
 	protected void onStart() {
@@ -295,4 +304,72 @@ public class MainActivity extends ActionBarActivity implements
 		super.onStop();
 		GoogleAnalytics.getInstance(this).reportActivityStop(this);
 	}
+
+	@SuppressWarnings("StatementWithEmptyBody")
+	@Override
+	public boolean onNavigationItemSelected(MenuItem item) {
+		// Handle navigation view item clicks here.
+		int id = item.getItemId();
+
+		if (id == R.id.nav_binary) {
+			mExerciseResIndex = R.string.binary;
+
+		} else if (id == R.id.nav_hexadecimal) {
+			mExerciseResIndex = R.string.hexadecimal;
+		}else if (id == R.id.nav_sign_and_magnitude) {
+			mExerciseResIndex = R.string.sign_and_magnitude;
+		}else if (id == R.id.nav_twoscomplement) {
+			mExerciseResIndex = R.string.twoscomplement;
+		}else if (id == R.id.nav_floating_point) {
+			mExerciseResIndex = R.string.floating_point;
+		}
+
+		else if (id == R.id.nav_logic_gate) {
+			mExerciseResIndex = R.string.logic_gate;
+		}else if (id == R.id.nav_logic_operation) {
+			mExerciseResIndex = R.string.logic_operation;
+		}
+
+		else if (id == R.id.nav_network_address) {
+			mExerciseResIndex = R.string.network_address;
+		}
+		else if (id == R.id.nav_cidr) {
+			mExerciseResIndex = R.string.cidr;
+		}
+		else if (id == R.id.nav_host_count) {
+			mExerciseResIndex = R.string.host_count;
+		}
+		else if (id == R.id.nav_network_mask) {
+			mExerciseResIndex = R.string.network_mask;
+		}
+		else if (id == R.id.nav_network_layer) {
+			mExerciseResIndex = R.string.network_layer;
+		}
+
+		else if (id == R.id.nav_highscores) {
+			mExerciseResIndex = R.string.highscores;
+		}
+		else if (id == R.id.nav_config) {
+			Intent intent = new Intent(this, SettingsActivity.class);
+			startActivity(intent);
+			return true;
+
+		}
+		else if (id == R.id.nav_help) {
+			Intent goToHelp = new Intent(this, HelpActivity.class);
+			startActivity(goToHelp);
+			return true;
+
+		}
+
+
+		updateContentFragment();
+
+
+		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+		drawer.closeDrawer(GravityCompat.START);
+		return true;
+	}
+
+
 }
